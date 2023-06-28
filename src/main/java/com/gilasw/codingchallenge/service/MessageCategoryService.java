@@ -21,4 +21,8 @@ public class MessageCategoryService implements IMessageCategoryService {
     public List<MessageCategory> findAll() {
         return getMockedMessageCategories();
     }
+
+    public boolean doesCategoryExist(String category) {
+        return findAll().stream().anyMatch(messageCategory -> messageCategory.getName().equalsIgnoreCase(category));
+    }
 }

@@ -1,7 +1,5 @@
 package com.gilasw.codingchallenge.model;
 
-import com.gilasw.codingchallenge.notification.NotificationType;
-
 import java.util.List;
 
 public class User {
@@ -94,7 +92,7 @@ public class User {
         return this;
     }
 
-    public boolean hasCategory(String category) {
-        return subscribed.stream().anyMatch(messageCategory -> messageCategory.getName().equals(category));
+    public boolean hasCategory(String categoryName) {
+        return subscribed.stream().anyMatch(messageCategory -> messageCategory.getName().equalsIgnoreCase(categoryName));
     }
 }

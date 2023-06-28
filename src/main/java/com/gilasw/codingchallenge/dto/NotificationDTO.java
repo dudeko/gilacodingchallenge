@@ -1,12 +1,17 @@
-package com.gilasw.codingchallenge.notification;
+package com.gilasw.codingchallenge.dto;
 
 import com.gilasw.codingchallenge.model.User;
+
+import java.util.Date;
+
+import static java.lang.System.lineSeparator;
 
 public class NotificationDTO {
 
     private User user;
     private String category;
     private String message;
+    private String notificationType;
 
     public static NotificationDTO create(User user, String category, String message) {
         NotificationDTO notificationDTO = new NotificationDTO();
@@ -37,5 +42,30 @@ public class NotificationDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getNotificationType() {
+        return notificationType;
+    }
+
+    public void setNotificationType(String notificationType) {
+        this.notificationType = notificationType;
+    }
+
+    public NotificationDTO notificationType(String notificationType) {
+        this.setNotificationType(notificationType);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return new Date()
+                + " - "
+                + this.getNotificationType()
+                + " (" + this.getCategory() + ")"
+                + " to "
+                + this.getUser().getName()
+                + ": "
+                + this.getMessage();
     }
 }

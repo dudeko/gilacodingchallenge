@@ -1,4 +1,4 @@
-package com.gilasw.codingchallenge.notification;
+package com.gilasw.codingchallenge.model;
 
 public enum NotificationType {
 
