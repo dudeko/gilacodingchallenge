@@ -1,4 +1,4 @@
-package com.gilasw.codingchallenge.service;
+package com.gilasw.codingchallenge.service.notificationtype;
 
 import com.gilasw.codingchallenge.dto.NotificationDTO;
 import com.gilasw.codingchallenge.model.NotificationType;
@@ -7,7 +7,7 @@ public interface IBaseNotificationTypeService {
 
     NotificationType getNotificationType();
 
-    boolean isNotificationType(NotificationType notificationType);
-
     void send(NotificationDTO notificationDTO);
+
+    void sendAndLogExceptions(NotificationDTO notificationDTO);
 }

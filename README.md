@@ -1,9 +1,16 @@
 # Gila Software Coding Challenge
 
 ## Requirements
+
 * Java 17
+* Docker
 
 ## How to run
+
+The MongoDB container should be up and running before starting the application:
+```shell
+docker compose up
+```
 
 As this is a Spring Boot project, the following command is used to start the API server:
 

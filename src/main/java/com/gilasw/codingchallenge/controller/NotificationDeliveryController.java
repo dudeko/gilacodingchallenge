@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationDeliveryController {
 
     @Autowired
-    private INotificationDeliveryService notificationDeliiveryService;
+    private INotificationDeliveryService notificationDeliveryService;
     @Autowired
     private IMessageCategoryService messageCategoryService;
 
@@ -23,7 +23,7 @@ public class NotificationDeliveryController {
     public ApiResponseDTO send(@RequestParam String category, @RequestParam String message) {
         validateCategory(category);
         validateMessage(message);
-        notificationDeliiveryService.send(category, message);
+        notificationDeliveryService.send(category, message);
         return ApiResponseDTO.success("Message was sent successfully.");
     }
 
@@ -33,7 +33,7 @@ public class NotificationDeliveryController {
     }
 
     private void validateCategoryExists(String category) {
-        if (!messageCategoryService.doesCategoryExist(category)) {
+        if (messageCategoryService.doesNotExist(category)) {
             throw new ParameterValidationException("The " + category + " category does not exist.");
         }
     }

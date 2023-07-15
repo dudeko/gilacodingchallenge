@@ -1,28 +1,34 @@
 package com.gilasw.codingchallenge.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document("user")
 public class User {
-    private Long id;
+
+    @Id
+    private String id;
     private String name;
     private String email;
     private String phoneNumber;
-    private List<MessageCategory> subscribed;
-    private List<NotificationType> channels;
+    private List<MessageCategory> subscribed = List.of();
+    private List<NotificationType> channels = List.of();
 
     public static User create() {
         return new User();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public User id(Long id) {
+    public User id(String id) {
         this.setId(id);
         return this;
     }

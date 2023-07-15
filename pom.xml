@@ -12,7 +12,7 @@
 	<artifactId>codingchallenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>codingchallenge</name>
-	<description>Eduardo Minarelli&apos;s Coding Challenge for Gila Software</description>
+	<description>Eduardo Minarelli's Coding Challenge for Gila Software</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -21,11 +21,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 	</dependencies>
 

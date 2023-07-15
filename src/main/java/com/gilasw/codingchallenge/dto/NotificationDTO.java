@@ -4,8 +4,6 @@ import com.gilasw.codingchallenge.model.User;
 
 import java.util.Date;
 
-import static java.lang.System.lineSeparator;
-
 public class NotificationDTO {
 
     private User user;

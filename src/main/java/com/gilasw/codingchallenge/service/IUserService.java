@@ -6,7 +6,5 @@ import java.util.List;
 
 public interface IUserService {
 
-    List<User> findAll();
-
     List<User> findWithCategory(String category);
 }

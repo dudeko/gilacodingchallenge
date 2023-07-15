@@ -1,9 +1,9 @@
 package com.gilasw.codingchallenge.service;
 
 import com.gilasw.codingchallenge.dto.NotificationDTO;
-import com.gilasw.codingchallenge.model.NotificationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,22 +13,12 @@ import static java.lang.System.lineSeparator;
 import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public abstract class BaseNotificationTypeService implements IBaseNotificationTypeService {
+@Component
+public class NotificationLogFileHandler {
 
-    Logger logger = LoggerFactory.getLogger(BaseNotificationTypeService.class);
+    private final Logger logger = LoggerFactory.getLogger(NotificationLogFileHandler.class);
 
-    @Override
-    public abstract NotificationType getNotificationType();
-
-    @Override
-    public boolean isNotificationType(NotificationType notificationType) {
-        return this.getNotificationType().equals(notificationType);
-    }
-
-    @Override
-    public abstract void send(NotificationDTO notificationDTO);
-
-    protected void printOnFile(NotificationDTO notificationDTO) {
+    public void printOnFile(NotificationDTO notificationDTO) {
         try {
             Files.writeString(Paths.get("notification_log.txt"), notificationDTO.toString() + lineSeparator(), CREATE, APPEND);
             logger.info(notificationDTO.toString());

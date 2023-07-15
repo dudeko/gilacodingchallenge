@@ -1,5 +1,8 @@
 package com.gilasw.codingchallenge.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("messageCategory")
 public class MessageCategory {
 
     private String name;
