@@ -7,7 +7,7 @@ public interface IBaseNotificationTypeService {
 
     NotificationType getNotificationType();
 
-    void send(NotificationDTO notificationDTO);
+    void send(NotificationDTO notificationDTO) throws Exception;
 
     void sendAndLogExceptions(NotificationDTO notificationDTO);
 }

@@ -25,11 +25,11 @@ public class NotificationTypeServiceSelector {
     }
 
     private String getNotificationTypeString(IBaseNotificationTypeService notificationTypeService) {
-        return notificationTypeService.getNotificationType().toString();
+        return notificationTypeService.getNotificationType().name();
     }
 
     public IBaseNotificationTypeService getNotificationService(NotificationType notificationType) {
-        IBaseNotificationTypeService notificationTypeService =  notificationTypeServiceMap.get(notificationType.toString());
+        IBaseNotificationTypeService notificationTypeService =  notificationTypeServiceMap.get(notificationType.name());
         if (notificationTypeService == null) {
             logger.warn("The " + notificationType + " notificationType does not have a service implementation.");
         }

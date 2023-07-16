@@ -12,14 +12,14 @@ import static com.gilasw.codingchallenge.dto.NotificationDTO.create;
 public class NotificationDeliveryService implements INotificationDeliveryService {
 
     @Autowired
-    private NotificationTypeServiceSelector notificationServiceSelector;
+    private NotificationTypeServiceSelector notificationTypeServiceSelector;
     @Autowired
     private UserService userService;
 
     public void send(String category, String message) {
         userService.findWithCategory(category).forEach(user -> {
             user.getChannels().stream()
-                .map(notificationServiceSelector::getNotificationService)
+                .map(notificationTypeServiceSelector::getNotificationService)
                 .filter(Objects::nonNull)
                 .forEach(notificationService -> notificationService.sendAndLogExceptions(create(user, category, message)));
         });
