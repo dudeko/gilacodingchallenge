@@ -1,9 +1,12 @@
 package com.gilasw.codingchallenge.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gilasw.codingchallenge.dto.NotificationDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;

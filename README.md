@@ -8,6 +8,7 @@
 ## How to run
 
 The MongoDB container should be up and running before starting the application:
+> PS: On the first execution the database will be created and loaded with data from dump files that are on the _db-dump_ folder.
 ```shell
 docker compose up
 ```
@@ -17,15 +18,14 @@ As this is a Spring Boot project, the following command is used to start the API
 ```shell
 ./mvnw spring-boot:run
 ```
-
-With the server executing, the below API will be available:
+\
+ With the server executing, a webpage (http://localhost:8080) and also the API below will be available to send notifications:
 
 **Notification Delivery**
 ----
 A message will be sent with the chosen category to every user that has subscribed to it and will deliver using each 
 notification type chosen by each user.<br>
-The messages (and all information related to it) will be registered on the _notification_log.txt_ file which will be 
-generated on the root of the project if it doesn't already exist and will also appear on the server log.
+The messages (and all information related to it) will be registered on thee database and will appear on the application log.
 
 * **URL**
 
