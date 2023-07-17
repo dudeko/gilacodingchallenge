@@ -49,6 +49,18 @@ The messages (and all information related to it) will be registered on thee data
 
 ---
 
+## Improvement Ideas
+
+* Do more componentization on the React frontend code.
+* Define more types with Typescript and use for every object and variable.
+* Create automated tests on the frontend project.
+* Use websocket on the frontend to update the log without having to refresh the page.
+* Better handling of situations in which could result in an error on backend requests by showing a message to the user.
+* Pagination and filtering of log lines.
+* Animation showing clearly which lines were recently added to the Log History.
+
+---
+
 ## Coding Challenge Requirements
 
 ### Notification Test
