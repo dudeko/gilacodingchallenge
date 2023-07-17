@@ -1,6 +1,6 @@
 package com.gilasw.codingchallenge.service;
 
-import com.gilasw.codingchallenge.dto.NotificationDTO;
+import com.gilasw.codingchallenge.model.NotificationLog;
 import com.gilasw.codingchallenge.model.User;
 import com.gilasw.codingchallenge.service.notificationtype.EmailNotificationTypeService;
 import com.gilasw.codingchallenge.service.notificationtype.IBaseNotificationTypeService;
@@ -56,7 +56,7 @@ class NotificationDeliveryServiceUnitTest {
         notificationDeliveryService.send(anyString(), "Team A scored a goal!");
 
         //then
-        verify(smsNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationDTO.class));
+        verify(smsNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationLog.class));
     }
 
     @Test
@@ -79,9 +79,9 @@ class NotificationDeliveryServiceUnitTest {
         notificationDeliveryService.send(anyString(), "Team A scored a goal!");
 
         //then
-        verify(emailNotificationTypeService, times(2)).sendAndLogExceptions(any(NotificationDTO.class));
-        verify(pushNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationDTO.class));
-        verify(smsNotificationTypeService, times(3)).sendAndLogExceptions(any(NotificationDTO.class));
+        verify(emailNotificationTypeService, times(2)).sendAndLogExceptions(any(NotificationLog.class));
+        verify(pushNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationLog.class));
+        verify(smsNotificationTypeService, times(3)).sendAndLogExceptions(any(NotificationLog.class));
     }
 
     @Test
@@ -95,7 +95,7 @@ class NotificationDeliveryServiceUnitTest {
         notificationDeliveryService.send(anyString(), "AFC Richmond won the match!");
 
         //then
-        verify(notificationTypeService, times(0)).sendAndLogExceptions(any(NotificationDTO.class));
+        verify(notificationTypeService, times(0)).sendAndLogExceptions(any(NotificationLog.class));
     }
 
     @Test
@@ -110,15 +110,15 @@ class NotificationDeliveryServiceUnitTest {
         SmsNotificationTypeService smsNotificationTypeService = mock(SmsNotificationTypeService.class);
         when(notificationTypeServiceSelector.getNotificationService(PUSH)).thenReturn(pushNotificationTypeService);
         when(notificationTypeServiceSelector.getNotificationService(SMS)).thenReturn(smsNotificationTypeService);
-        doCallRealMethod().when(pushNotificationTypeService).sendAndLogExceptions(any(NotificationDTO.class));
-        doThrow(Exception.class).when(pushNotificationTypeService).send(any(NotificationDTO.class));
+        doCallRealMethod().when(pushNotificationTypeService).sendAndLogExceptions(any(NotificationLog.class));
+        doThrow(Exception.class).when(pushNotificationTypeService).send(any(NotificationLog.class));
         ReflectionTestUtils.setField(pushNotificationTypeService, "logger", mock(Logger.class));
 
         //when
         notificationDeliveryService.send(anyString(), "Skynet stocks are rising!");
 
         //then
-        verify(smsNotificationTypeService, times(2)).sendAndLogExceptions(any(NotificationDTO.class));
-        verify(pushNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationDTO.class));
+        verify(smsNotificationTypeService, times(2)).sendAndLogExceptions(any(NotificationLog.class));
+        verify(pushNotificationTypeService, times(1)).sendAndLogExceptions(any(NotificationLog.class));
     }
 }

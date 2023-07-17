@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gilasw</groupId>
 	<artifactId>codingchallenge</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>codingchallenge</name>
 	<description>Eduardo Minarelli's Coding Challenge for Gila Software</description>
 	<properties>

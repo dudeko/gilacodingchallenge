@@ -1,8 +1,8 @@
 package com.gilasw.codingchallenge.service.notificationtype;
 
-import com.gilasw.codingchallenge.dto.NotificationDTO;
+import com.gilasw.codingchallenge.model.NotificationLog;
 import com.gilasw.codingchallenge.model.NotificationType;
-import com.gilasw.codingchallenge.service.NotificationLogFileHandler;
+import com.gilasw.codingchallenge.service.NotificationLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +12,20 @@ public abstract class BaseNotificationTypeService implements IBaseNotificationTy
     private final Logger logger = LoggerFactory.getLogger(BaseNotificationTypeService.class);
 
     @Autowired
-    protected NotificationLogFileHandler notificationLogFileHandler;
+    protected NotificationLogService notificationLogService;
 
     @Override
     public abstract NotificationType getNotificationType();
 
     @Override
-    public abstract void send(NotificationDTO notificationDTO);
+    public void send(NotificationLog notificationLog) {
+        notificationLogService.save(notificationLog.withNotificationType(this.getNotificationType()));
+    }
 
     @Override
-    public void sendAndLogExceptions(NotificationDTO notificationDTO) {
+    public void sendAndLogExceptions(NotificationLog notificationLog) {
         try {
-            this.send(notificationDTO);
+            this.send(notificationLog);
         } catch (Exception ex) {
             logger.error("Unable to send notification: " + getExceptionNameAndMessage(ex));
         }

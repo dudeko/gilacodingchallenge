@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
-import static com.gilasw.codingchallenge.dto.NotificationDTO.create;
+import static com.gilasw.codingchallenge.model.NotificationLog.create;
 
 @Service
 public class NotificationDeliveryService implements INotificationDeliveryService {

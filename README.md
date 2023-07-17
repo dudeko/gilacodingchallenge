@@ -51,45 +51,53 @@ The messages (and all information related to it) will be registered on thee data
 
 ## Coding Challenge Requirements
 
-### Back End – Notification APIs
+### Notification Test
 
-It is required to create a notification system API, which is capable of receiving a message and depending on the
-category of the message and the users subscribed to them, said users will be notified to the medium that they
-themselves chose.
+We have to create a notification system that has the ability to receive a message and depending on
+the category and subscribers, notify these users in the channels they are registered.
 
-3 categories of messages will be handled:
-*  Sports
+It will be 3 message categories:
+* Sports
 * Finance
-* Films
+* Movies
 
-And it is required to send 3 types of notifications
-* SMS 
-* E-mail
+And there will be 3 types of notifications, each type should have its own class to manage the logic of
+sending the message independently.
+* SMS
+* E-Mail
 * Push Notification
 
-It is not required that any message is actually sent or communicates with any external API, only the sending of
-said notification will be recorded in a Logs file or in the database.
-
-In the log it is required to save all the necessary information to identify that the correct notification was made
-to the corresponding user. Save information such as the type of message, type of notification, user data, time,
-etc.
-
-User administration is not required, a Mock of users can be managed in the system, they must have the
-following information:
+No notification will actually be sent or the need to communicate with any external APIs, only will
+register the sent notification in an archive of Logs or in a database.\
+In the log, it will need to save all the information necessary to identify that the notification has been
+sent correctly to the respective subscriber, such as the type of message, type of notification, user
+data, time, etc.\
+No user administration is required, you can use a Mock of users in the source code, and they must have
+the following information:
 * ID
 * Name
-* E-mail
-* Phone
-* Subscribed [] List of categories you are subscribed to
-* Channels [] List of user notification types (SMS | Email | PushNotification)
+* Email
+* Phone number
+* Subscribed [] here you need to list all the categories where the user is subscribed
+* Channels [] a list of the notification's channels (SMS | E-Mail | Push Notification)
 
-The API will receive 2 parameters:
-1. Category. Validate from the list of available categories
-2. Message. Just validate that the message is not empty.
-   
+As user interface you need to display 2 main elements.
+1. **Submission form.** A simple form to send the message, which will have 2 fields:
+   * **Category.** List of available categories.
+   * **Message.** Text area, only validate that the message is not empty.
+2. **Log history.** A list of all records in the log, sorted from newest to oldest.
+
 What will be evaluated:
-* Application architecture and design patterns
-* OOP and Scalability (Ready to add more types of notifications).
-* Handling requests to the Server through RESTful APIs
-* For testing, register at least 3 users with different configurations
-
+* Best practices: Validations and handle exceptions, Intuitive names, and OOP.
+* Solid Principles: Separation of concerns, Abstraction and scalability, Inferface usage, Dependency
+inversion.
+* Design Patterns: One or more design patterns implemented to solve the main problem, select the proper
+channels and send notifications.
+* Architecture: Well architecture design, have a well defined folder structure and separation of concerns,
+scalable and prepared for minimum changes on new requirements in the future.
+(Routes/Controllers/Services/Repositories, DTOs / Interfaces / etc.).
+* Unit Testing: Tests for each service and function, Multiple test scenarios per function.
+* Database: Migrations and Seeders, Foreign keys usage (In case of RDBMS), Indexing, Proper data types
+and length and Load all catalogs in the database (Is a plus).
+* Challenge: Requirements accomplish, Performance and search methods, Fault tolerant on sending
+  notifications and Scalable to add more notification channels.

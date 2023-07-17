@@ -1,6 +1,6 @@
 package com.gilasw.codingchallenge.service.notificationtype;
 
-import com.gilasw.codingchallenge.dto.NotificationDTO;
+import com.gilasw.codingchallenge.model.NotificationLog;
 import com.gilasw.codingchallenge.model.NotificationType;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,5 @@ public class SmsNotificationTypeService extends BaseNotificationTypeService {
     @Override
     public NotificationType getNotificationType() {
         return SMS;
-    }
-
-    @Override
-    public void send(NotificationDTO notificationDTO) {
-        notificationLogFileHandler.printOnFile(notificationDTO.notificationType(this.getNotificationType().name()));
     }
 }
